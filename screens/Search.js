@@ -23,16 +23,7 @@ export default class SearchScreen extends Component {
   };
 
   getTransactions = () => {
-    db.collection("transactions")
-      .limit(10)
-      .get()
-      .then(snapshot => {
-        snapshot.docs.map(doc => {
-          this.setState({
-            allTransactions: [...this.state.allTransactions, doc.data()]
-          });
-        });
-      });
+
   };
 
   renderItem = ({ item, i }) => {
@@ -126,6 +117,8 @@ renderItem = ({ item, i }) => {
     );
   };
 
+// handleSearch
+
   render() {
     const { searchText, allTransactions } = this.state;
     return (
@@ -144,11 +137,7 @@ renderItem = ({ item, i }) => {
           </View>
         </View>
         <View style={styles.lowerContainer}>
-          <FlatList
-            data={allTransactions}
-            renderItem={this.renderItem}
-            keyExtractor={(item, index) => index.toString()}
-          />
+            //Flatlist
         </View>
       </View>
     );
